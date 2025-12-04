@@ -125,12 +125,16 @@ A aplicação inclui rotas entre as principais cidades brasileiras:
 
 ## 📊 Fatores de Emissão (kg CO2/km por pessoa)
 
-- **Carro**: 0.12 kg CO2/km
-- **Ônibus**: 0.05 kg CO2/km
-- **Avião**: 0.25 kg CO2/km
-- **Trem**: 0.03 kg CO2/km
+Baseado em levantamento técnico com dados brasileiros atualizados:
 
-## 🚀 Deploy
+- **🚴 Bicicleta**: 0.000 kg CO2/km _(Zero emissões)_
+- **🔋 Carro Elétrico**: 0.022 kg CO2/km _(Matriz elétrica brasileira)_
+- **🚆 Trem/Metrô**: 0.035 kg CO2/km _(Alta eficiência energética)_
+- **🌱 Carro Híbrido**: 0.051 kg CO2/km _(Tecnologia flex + etanol)_
+- **🚌 Ônibus Urbano**: 0.075 kg CO2/km _(Emissões diluídas)_
+- **🏍️ Motocicleta**: 0.130 kg CO2/km _(Baixa ocupação)_
+- **✈️ Avião**: 0.123 kg CO2/km _(Queima intensiva)_
+- **🚗 Carro Flex/Gasolina**: 0.148 kg CO2/km _(Maior impacto)_## 🚀 Deploy
 
 ### Vercel (Recomendado)
 
