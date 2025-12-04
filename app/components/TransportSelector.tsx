@@ -24,7 +24,7 @@ export function TransportSelector({
       </h2>
 
       {/* Grid de Transportes */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-2 gap-4 mb-6">
         {Object.values(CO2_CONFIG.transports).map((transport) => {
           const isSelected = selectedTransport === transport.id;
           const emission = CO2_CONFIG.emissions[transport.id as TransportId];
@@ -75,29 +75,32 @@ export function TransportSelector({
         })}
       </div>
 
-      {/* Seção de Passageiros (apenas para carro) */}
-      {selectedTransport === "car" && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 animate-fade-in">
-          <label
-            htmlFor="passengers"
-            className="block text-sm font-medium text-blue-800 mb-2"
-          >
-            Número de passageiros:
-          </label>
-          <input
-            type="number"
-            id="passengers"
-            min="1"
-            max="50"
-            value={passengers}
-            onChange={(e) => onPassengersChange(parseInt(e.target.value))}
-            className="w-full max-w-xs px-4 py-2 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
-          />
-          <p className="text-xs text-blue-600 mt-1">
-            Mais passageiros = menor emissão por pessoa
-          </p>
-        </div>
-      )}
+      {/* Seção de Passageiros (veículos individuais) */}
+      {selectedTransport &&
+        ["car", "electricCar", "hybridCar", "motorcycle"].includes(
+          selectedTransport
+        ) && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 animate-fade-in">
+            <label
+              htmlFor="passengers"
+              className="block text-sm font-medium text-blue-800 mb-2"
+            >
+              Número de passageiros:
+            </label>
+            <input
+              type="number"
+              id="passengers"
+              min="1"
+              max="50"
+              value={passengers}
+              onChange={(e) => onPassengersChange(parseInt(e.target.value))}
+              className="w-full max-w-xs px-4 py-2 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900"
+            />
+            <p className="text-xs text-blue-600 mt-1">
+              Mais passageiros = menor emissão por pessoa
+            </p>
+          </div>
+        )}
     </section>
   );
 }
@@ -105,22 +108,28 @@ export function TransportSelector({
 // Funções auxiliares para cores
 function getBorderColor(transport: TransportId): string {
   const colors: Record<TransportId, string> = {
-    car: "border-blue-500",
-    bus: "border-orange-500",
-    train: "border-purple-500",
-    plane: "border-red-500",
     bike: "border-green-500",
+    electricCar: "border-emerald-500",
+    train: "border-violet-500",
+    hybridCar: "border-cyan-500",
+    bus: "border-amber-500",
+    motorcycle: "border-orange-500",
+    plane: "border-red-500",
+    car: "border-red-600",
   };
   return colors[transport];
 }
 
 function getBackgroundColor(transport: TransportId): string {
   const colors: Record<TransportId, string> = {
-    car: "bg-blue-500",
-    bus: "bg-orange-500",
-    train: "bg-purple-500",
-    plane: "bg-red-500",
     bike: "bg-green-500",
+    electricCar: "bg-emerald-500",
+    train: "bg-violet-500",
+    hybridCar: "bg-cyan-500",
+    bus: "bg-amber-500",
+    motorcycle: "bg-orange-500",
+    plane: "bg-red-500",
+    car: "bg-red-600",
   };
   return colors[transport];
 }
