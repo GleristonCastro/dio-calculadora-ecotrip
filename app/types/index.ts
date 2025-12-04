@@ -16,7 +16,15 @@ export interface Transport {
   defaultPassengers?: number;
 }
 
-export type TransportId = "car" | "bus" | "train" | "plane" | "bike";
+export type TransportId =
+  | "bike"
+  | "electricCar"
+  | "train"
+  | "hybridCar"
+  | "bus"
+  | "motorcycle"
+  | "plane"
+  | "car";
 
 export type EmissionsConfig = Record<TransportId, number>;
 
