@@ -2,6 +2,10 @@
 
 Uma aplicação web moderna para calcular as emissões de CO2 geradas por diferentes meios de transporte entre cidades brasileiras. Desenvolvida com **Next.js**, **React**, **TypeScript** e **Tailwind CSS**.
 
+## 🌐 Demo Online
+
+**🚀 [Acesse a aplicação: dio-calculadora-ecotrip.vercel.app](https://dio-calculadora-ecotrip.vercel.app/)**
+
 ## 👤 Autor
 
 **Gleriston Castro**  
@@ -134,7 +138,13 @@ Baseado em levantamento técnico com dados brasileiros atualizados:
 - **🚌 Ônibus Urbano**: 0.075 kg CO2/km _(Emissões diluídas)_
 - **🏍️ Motocicleta**: 0.130 kg CO2/km _(Baixa ocupação)_
 - **✈️ Avião**: 0.123 kg CO2/km _(Queima intensiva)_
-- **🚗 Carro Flex/Gasolina**: 0.148 kg CO2/km _(Maior impacto)_## 🚀 Deploy
+- **🚗 Carro Flex/Gasolina**: 0.148 kg CO2/km _(Maior impacto)_
+
+## 🚀 Deploy
+
+### ✅ Produção Atual
+
+**🌐 Aplicação disponível em:** [dio-calculadora-ecotrip.vercel.app](https://dio-calculadora-ecotrip.vercel.app/)
 
 ### Vercel (Recomendado)
 
