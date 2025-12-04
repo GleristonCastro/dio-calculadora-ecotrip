@@ -37,13 +37,30 @@ export function calculateAllTransports(
     number
   >;
 
-  const transportIds: TransportId[] = ["car", "bus", "train", "plane", "bike"];
+  // Lista atualizada com todos os transportes do levantamento
+  const transportIds: TransportId[] = [
+    "bike",
+    "electricCar",
+    "train",
+    "hybridCar",
+    "bus",
+    "motorcycle",
+    "plane",
+    "car",
+  ];
 
   for (const transportId of transportIds) {
+    // Aplicar passageiros apenas para veículos individuais
+    const usePassengers = [
+      "car",
+      "electricCar",
+      "hybridCar",
+      "motorcycle",
+    ].includes(transportId);
     const co2 = calculateCO2(
       distance,
       transportId,
-      transportId === "car" ? passengers : 1
+      usePassengers ? passengers : 1
     );
     results[transportId] = co2 || 0;
   }
