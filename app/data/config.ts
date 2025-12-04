@@ -1,22 +1,47 @@
 import type { CO2Config, TransportId } from "../types";
 
 export const CO2_CONFIG: CO2Config = {
-  // Emissões de CO2 em kg por km por passageiro
+  // Emissões de CO2 em kg por km por passageiro (baseado no levantamento)
   emissions: {
-    car: 0.192, // Carro médio gasolina
-    bus: 0.089, // Ônibus rodoviário
-    train: 0.041, // Trem elétrico
-    plane: 0.255, // Avião comercial
-    bike: 0, // Bicicleta (zero emissões)
+    bike: 0.0, // Bicicleta (zero emissões)
+    electricCar: 0.022, // Carro Elétrico (BEV)
+    train: 0.035, // Trem/Metrô (média 0.020-0.050)
+    hybridCar: 0.051, // Carro Híbrido Flex
+    bus: 0.075, // Ônibus Urbano (média 0.050-0.100)
+    motorcycle: 0.13, // Motocicleta (média 0.110-0.150)
+    plane: 0.123, // Avião
+    car: 0.148, // Carro Flex/Gasolina
   },
 
   // Informações sobre cada meio de transporte
   transports: {
-    car: {
-      id: "car",
-      name: "Carro",
-      icon: "🚗",
-      color: "#3498db",
+    bike: {
+      id: "bike",
+      name: "Bicicleta",
+      icon: "🚴",
+      color: "#22c55e",
+      allowPassengers: false,
+    },
+    electricCar: {
+      id: "electricCar",
+      name: "Carro Elétrico",
+      icon: "🔋",
+      color: "#10b981",
+      allowPassengers: true,
+      defaultPassengers: 1,
+    },
+    train: {
+      id: "train",
+      name: "Trem/Metrô",
+      icon: "🚆",
+      color: "#8b5cf6",
+      allowPassengers: false,
+    },
+    hybridCar: {
+      id: "hybridCar",
+      name: "Carro Híbrido",
+      icon: "🌱",
+      color: "#06b6d4",
       allowPassengers: true,
       defaultPassengers: 1,
     },
@@ -24,29 +49,31 @@ export const CO2_CONFIG: CO2Config = {
       id: "bus",
       name: "Ônibus",
       icon: "🚌",
-      color: "#f39c12",
+      color: "#f59e0b",
       allowPassengers: false,
     },
-    train: {
-      id: "train",
-      name: "Trem",
-      icon: "🚆",
-      color: "#9b59b6",
-      allowPassengers: false,
+    motorcycle: {
+      id: "motorcycle",
+      name: "Motocicleta",
+      icon: "🏍️",
+      color: "#f97316",
+      allowPassengers: true,
+      defaultPassengers: 1,
     },
     plane: {
       id: "plane",
       name: "Avião",
       icon: "✈️",
-      color: "#e74c3c",
+      color: "#ef4444",
       allowPassengers: false,
     },
-    bike: {
-      id: "bike",
-      name: "Bicicleta",
-      icon: "🚴",
-      color: "#2ecc71",
-      allowPassengers: false,
+    car: {
+      id: "car",
+      name: "Carro Flex/Gasolina",
+      icon: "🚗",
+      color: "#dc2626",
+      allowPassengers: true,
+      defaultPassengers: 1,
     },
   },
 
@@ -109,17 +136,23 @@ export const CO2_CONFIG: CO2Config = {
 
 // Mapeamento de cores dos transportes para Tailwind CSS
 export const TRANSPORT_COLORS: Record<TransportId, string> = {
-  car: "bg-blue-500",
-  bus: "bg-orange-500",
-  train: "bg-purple-500",
-  plane: "bg-red-500",
   bike: "bg-green-500",
+  electricCar: "bg-emerald-500",
+  train: "bg-violet-500",
+  hybridCar: "bg-cyan-500",
+  bus: "bg-amber-500",
+  motorcycle: "bg-orange-500",
+  plane: "bg-red-500",
+  car: "bg-red-600",
 };
 
 export const TRANSPORT_TEXT_COLORS: Record<TransportId, string> = {
-  car: "text-blue-500",
-  bus: "text-orange-500",
-  train: "text-purple-500",
-  plane: "text-red-500",
   bike: "text-green-500",
+  electricCar: "text-emerald-500",
+  train: "text-violet-500",
+  hybridCar: "text-cyan-500",
+  bus: "text-amber-500",
+  motorcycle: "text-orange-500",
+  plane: "text-red-500",
+  car: "text-red-600",
 };
