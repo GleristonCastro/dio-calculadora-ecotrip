@@ -53,6 +53,17 @@ export function ComparisonChart({ comparisons }: ComparisonChartProps) {
                       ✓ Selecionado
                     </span>
                   )}
+                  {index === 0 && (
+                    <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium animate-pulse">
+                      🏆 Mais Limpo
+                    </span>
+                  )}
+                  {index === comparisons.length - 1 &&
+                    comparisons.length > 1 && (
+                      <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        ⚠️ Mais Poluente
+                      </span>
+                    )}
                 </div>
 
                 <div
@@ -91,24 +102,6 @@ export function ComparisonChart({ comparisons }: ComparisonChartProps) {
                   </div>
                 )}
               </div>
-
-              {/* Badge para transporte mais limpo */}
-              {index === 0 && (
-                <div className="absolute -top-2 -right-2">
-                  <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg animate-pulse">
-                    🏆 Mais Limpo
-                  </div>
-                </div>
-              )}
-
-              {/* Badge para transporte mais poluente */}
-              {index === comparisons.length - 1 && comparisons.length > 1 && (
-                <div className="absolute -top-2 -right-2">
-                  <div className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">
-                    ⚠️ Mais Poluente
-                  </div>
-                </div>
-              )}
             </div>
           );
         })}
